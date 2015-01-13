@@ -272,7 +272,7 @@ func (context *AptlyContext) GetPublishedStorage(name string) aptly.PublishedSto
 
 			var err error
 			publishedStorage, err = swift.NewPublishedStorage(params.UserName, params.Password,
-				params.AuthUrl, params.Tenant, params.TenantId, params.Prefix, params.Container)
+				params.AuthUrl, params.Tenant, params.TenantId, params.Container, params.Prefix)
 			if err != nil {
 				Fatal(err)
 			}
