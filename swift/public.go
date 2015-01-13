@@ -88,9 +88,7 @@ func (storage *PublishedStorage) PutFile(path string, sourceFilename string) err
 	}
 	defer source.Close()
 
-        dir, file := filepath.Split(path)
-
-        _, err = storage.conn.ObjectPut(dir, filepath.Join(storage.prefix, file), source, false, "", "", nil)
+        _, err = storage.conn.ObjectPut(storage.container, filepath.Join(storage.prefix, path), source, false, "", "", nil)
 
 	if err != nil {
 		return fmt.Errorf("error uploading %s to %s: %s", sourceFilename, storage, err)
@@ -100,9 +98,7 @@ func (storage *PublishedStorage) PutFile(path string, sourceFilename string) err
 
 // Remove removes single file under public path
 func (storage *PublishedStorage) Remove(path string) error {
-        dir, file := filepath.Split(path)
-
-	err := storage.conn.ObjectDelete(dir, filepath.Join(storage.prefix, file))
+	err := storage.conn.ObjectDelete(storage.container, filepath.Join(storage.prefix, path))
 
 	if err != nil {
 		return fmt.Errorf("error deleting %s from %s: %s", path, storage, err)
