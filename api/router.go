@@ -46,6 +46,12 @@ func Router(c *ctx.AptlyContext) http.Handler {
 
 		root.POST("/repos/:name/file/:dir/:file", apiReposPackageFromFile)
 		root.POST("/repos/:name/file/:dir", apiReposPackageFromDir)
+
+		root.POST("/repos/:name/snapshots", apiSnapshotsCreateFromRepository)
+	}
+
+	{
+		root.POST("/mirrors/:name/snapshots", apiSnapshotsCreateFromMirror)
 	}
 
 	{
@@ -75,6 +81,16 @@ func Router(c *ctx.AptlyContext) http.Handler {
 
 	{
 		root.GET("/graph.:ext", apiGraph)
+	}
+
+	{
+		root.GET("/snapshots", apiSnapshotsList)
+		root.POST("/snapshots", apiSnapshotsCreate)
+		root.PUT("/snapshots/:name", apiSnapshotsUpdate)
+		root.GET("/snapshots/:name", apiSnapshotsShow)
+		root.GET("/snapshots/:name/packages", apiSnapshotsSearchPackages)
+		root.DELETE("/snapshots/:name", apiSnapshotsDrop)
+		root.POST("/snapshots/:name/diff/:withSnapshot", apiSnapshotsDiff)
 	}
 
 	return router
