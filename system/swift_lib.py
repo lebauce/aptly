@@ -33,18 +33,27 @@ class SwiftTest(BaseTest):
         self.container_name = "aptly-sys-test-" + str(uuid.uuid4())
         swift_conn.put_container(self.container_name)
 
+        self.configOverride = {"SwiftPublishEndpoints": {
+            "test1": {
+                "container": self.container_name,
+            }
+        }}
+
         super(SwiftTest, self).prepare()
 
     def shutdown(self):
         if hasattr(self, "container_name"):
-            swift_conn.delete_container(self.container_name)
+            for obj in swift_conn.get_container(self.container_name,
+                                                full_listing=True)[1]:
+                swift_conn.delete_object(self.container_name, obj.get("name"))
 
+            swift_conn.delete_container(self.container_name)
         super(SwiftTest, self).shutdown()
 
     def check_path(self, path):
         if not hasattr(self, "container_contents"):
             self.container_contents = [obj.get('name') for obj in
-                    swift_conn.get_container(self.container_name)]
+                    swift_conn.get_container(self.container_name)[1]]
 
         if path in self.container_contents:
             return True

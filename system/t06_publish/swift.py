@@ -18,27 +18,27 @@ class SwiftPublish1Test(SwiftTest):
     def check(self):
         super(SwiftPublish1Test, self).check()
 
-        self.check_exists('public/dists/maverick/InRelease')
-        self.check_exists('public/dists/maverick/Release')
-        self.check_exists('public/dists/maverick/Release.gpg')
+        self.check_exists('dists/maverick/InRelease')
+        self.check_exists('dists/maverick/Release')
+        self.check_exists('dists/maverick/Release.gpg')
 
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages')
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages.gz')
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages.bz2')
-        self.check_exists('public/dists/maverick/main/source/Sources')
-        self.check_exists('public/dists/maverick/main/source/Sources.gz')
-        self.check_exists('public/dists/maverick/main/source/Sources.bz2')
+        self.check_exists('dists/maverick/main/binary-i386/Packages')
+        self.check_exists('dists/maverick/main/binary-i386/Packages.gz')
+        self.check_exists('dists/maverick/main/binary-i386/Packages.bz2')
+        self.check_exists('dists/maverick/main/source/Sources')
+        self.check_exists('dists/maverick/main/source/Sources.gz')
+        self.check_exists('dists/maverick/main/source/Sources.bz2')
 
-        self.check_exists('public/pool/main/p/pyspi/pyspi_0.6.1-1.3.dsc')
-        self.check_exists('public/pool/main/p/pyspi/pyspi_0.6.1-1.3.diff.gz')
-        self.check_exists('public/pool/main/p/pyspi/pyspi_0.6.1.orig.tar.gz')
-        self.check_exists('public/pool/main/p/pyspi/pyspi-0.6.1-1.3.stripped.dsc')
-        self.check_exists('public/pool/main/b/boost-defaults/libboost-program-options-dev_1.49.0.1_i386.deb')
+        self.check_exists('pool/main/p/pyspi/pyspi_0.6.1-1.3.dsc')
+        self.check_exists('pool/main/p/pyspi/pyspi_0.6.1-1.3.diff.gz')
+        self.check_exists('pool/main/p/pyspi/pyspi_0.6.1.orig.tar.gz')
+        self.check_exists('pool/main/p/pyspi/pyspi-0.6.1-1.3.stripped.dsc')
+        self.check_exists('pool/main/b/boost-defaults/libboost-program-options-dev_1.49.0.1_i386.deb')
 
         # # verify contents except of sums
-        self.check_file_contents('public/dists/maverick/Release', 'release', match_prepare=strip_processor)
-        self.check_file_contents('public/dists/maverick/main/source/Sources', 'sources', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
-        self.check_file_contents('public/dists/maverick/main/binary-i386/Packages', 'binary', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
+        self.check_file_contents('dists/maverick/Release', 'release', match_prepare=strip_processor)
+        self.check_file_contents('dists/maverick/main/source/Sources', 'sources', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
+        self.check_file_contents('dists/maverick/main/binary-i386/Packages', 'binary', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
 
 
 class SwiftPublish2Test(SwiftTest):
@@ -56,27 +56,27 @@ class SwiftPublish2Test(SwiftTest):
     def check(self):
         super(SwiftPublish2Test, self).check()
 
-        self.check_exists('public/dists/maverick/InRelease')
-        self.check_exists('public/dists/maverick/Release')
-        self.check_exists('public/dists/maverick/Release.gpg')
+        self.check_exists('dists/maverick/InRelease')
+        self.check_exists('dists/maverick/Release')
+        self.check_exists('dists/maverick/Release.gpg')
 
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages')
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages.gz')
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages.bz2')
-        self.check_exists('public/dists/maverick/main/source/Sources')
-        self.check_exists('public/dists/maverick/main/source/Sources.gz')
-        self.check_exists('public/dists/maverick/main/source/Sources.bz2')
+        self.check_exists('dists/maverick/main/binary-i386/Packages')
+        self.check_exists('dists/maverick/main/binary-i386/Packages.gz')
+        self.check_exists('dists/maverick/main/binary-i386/Packages.bz2')
+        self.check_exists('dists/maverick/main/source/Sources')
+        self.check_exists('dists/maverick/main/source/Sources.gz')
+        self.check_exists('dists/maverick/main/source/Sources.bz2')
 
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi_0.6.1-1.3.dsc')
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi_0.6.1-1.3.diff.gz')
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi_0.6.1.orig.tar.gz')
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi-0.6.1-1.3.stripped.dsc')
-        self.check_exists('public/pool/main/b/boost-defaults/libboost-program-options-dev_1.49.0.1_i386.deb')
+        self.check_not_exists('pool/main/p/pyspi/pyspi_0.6.1-1.3.dsc')
+        self.check_not_exists('pool/main/p/pyspi/pyspi_0.6.1-1.3.diff.gz')
+        self.check_not_exists('pool/main/p/pyspi/pyspi_0.6.1.orig.tar.gz')
+        self.check_not_exists('pool/main/p/pyspi/pyspi-0.6.1-1.3.stripped.dsc')
+        self.check_exists('pool/main/b/boost-defaults/libboost-program-options-dev_1.49.0.1_i386.deb')
 
         # verify contents except of sums
-        self.check_file_contents('public/dists/maverick/Release', 'release', match_prepare=strip_processor)
-        self.check_file_contents('public/dists/maverick/main/source/Sources', 'sources', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
-        self.check_file_contents('public/dists/maverick/main/binary-i386/Packages', 'binary', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
+        self.check_file_contents('dists/maverick/Release', 'release', match_prepare=strip_processor)
+        self.check_file_contents('dists/maverick/main/source/Sources', 'sources', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
+        self.check_file_contents('dists/maverick/main/binary-i386/Packages', 'binary', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
 
 
 class SwiftPublish3Test(SwiftTest):
@@ -96,24 +96,24 @@ class SwiftPublish3Test(SwiftTest):
     def check(self):
         super(SwiftPublish3Test, self).check()
 
-        self.check_exists('public/dists/maverick/InRelease')
-        self.check_exists('public/dists/maverick/Release')
-        self.check_exists('public/dists/maverick/Release.gpg')
+        self.check_exists('dists/maverick/InRelease')
+        self.check_exists('dists/maverick/Release')
+        self.check_exists('dists/maverick/Release.gpg')
 
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages.gz')
-        self.check_exists('public/dists/maverick/main/binary-i386/Packages.bz2')
-        self.check_exists('public/dists/maverick/main/binary-amd64/Packages')
-        self.check_exists('public/dists/maverick/main/binary-amd64/Packages.gz')
-        self.check_exists('public/dists/maverick/main/binary-amd64/Packages.bz2')
+        self.check_exists('dists/maverick/main/binary-i386/Packages.gz')
+        self.check_exists('dists/maverick/main/binary-i386/Packages.bz2')
+        self.check_exists('dists/maverick/main/binary-amd64/Packages')
+        self.check_exists('dists/maverick/main/binary-amd64/Packages.gz')
+        self.check_exists('dists/maverick/main/binary-amd64/Packages.bz2')
 
-        self.check_exists('public/pool/main/g/gnuplot/gnuplot-x11_4.6.1-1~maverick2_i386.deb')
-        self.check_exists('public/pool/main/g/gnuplot/gnuplot-x11_4.6.1-1~maverick2_amd64.deb')
-        self.check_not_exists('public/pool/main/g/gnuplot/gnuplot-nox_4.6.1-1~maverick2_i386.deb')
-        self.check_not_exists('public/pool/main/g/gnuplot/gnuplot-nox_4.6.1-1~maverick2_amd64.deb')
+        self.check_exists('pool/main/g/gnuplot/gnuplot-x11_4.6.1-1~maverick2_i386.deb')
+        self.check_exists('pool/main/g/gnuplot/gnuplot-x11_4.6.1-1~maverick2_amd64.deb')
+        self.check_not_exists('pool/main/g/gnuplot/gnuplot-nox_4.6.1-1~maverick2_i386.deb')
+        self.check_not_exists('pool/main/g/gnuplot/gnuplot-nox_4.6.1-1~maverick2_amd64.deb')
 
         # verify contents except of sums
-        self.check_file_contents('public/dists/maverick/Release', 'release', match_prepare=strip_processor)
-        self.check_file_contents('public/dists/maverick/main/binary-i386/Packages', 'binary', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
+        self.check_file_contents('dists/maverick/Release', 'release', match_prepare=strip_processor)
+        self.check_file_contents('dists/maverick/main/binary-i386/Packages', 'binary', match_prepare=lambda s: "\n".join(sorted(s.split("\n"))))
 
 
 class SwiftPublish4Test(SwiftTest):
@@ -147,12 +147,12 @@ class SwiftPublish5Test(SwiftTest):
     def check(self):
         super(SwiftPublish5Test, self).check()
 
-        self.check_exists('public/dists/sq1')
-        self.check_not_exists('public/dists/sq2')
-        self.check_exists('public/pool/main/')
+        self.check_exists('dists/sq1')
+        self.check_not_exists('dists/sq2')
+        self.check_exists('pool/main/')
 
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi_0.6.1-1.3.dsc')
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi_0.6.1-1.3.diff.gz')
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi_0.6.1.orig.tar.gz')
-        self.check_not_exists('public/pool/main/p/pyspi/pyspi-0.6.1-1.3.stripped.dsc')
-        self.check_exists('public/pool/main/b/boost-defaults/libboost-program-options-dev_1.49.0.1_i386.deb')
+        self.check_not_exists('pool/main/p/pyspi/pyspi_0.6.1-1.3.dsc')
+        self.check_not_exists('pool/main/p/pyspi/pyspi_0.6.1-1.3.diff.gz')
+        self.check_not_exists('pool/main/p/pyspi/pyspi_0.6.1.orig.tar.gz')
+        self.check_not_exists('pool/main/p/pyspi/pyspi-0.6.1-1.3.stripped.dsc')
+        self.check_exists('pool/main/b/boost-defaults/libboost-program-options-dev_1.49.0.1_i386.deb')
